@@ -7,5 +7,9 @@ export const metadata: Metadata = {
   description:"Explore every floor, find stores and get indoor directions at Prestige Plaza Nairobi.",
 };
 
-export default function MapPage(){return <MallMap/>}
+type MapPageProps={searchParams:Promise<{destination?:string;route?:string}>};
 
+export default async function MapPage({searchParams}:MapPageProps){
+  const {destination,route}=await searchParams;
+  return <MallMap initialDestination={destination} showRoute={route==="1"||route==="true"}/>;
+}

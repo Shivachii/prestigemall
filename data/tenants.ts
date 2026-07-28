@@ -52,3 +52,11 @@ export const categoryColors: Record<MapCategory, string> = {
   Services:"#4e8f8b", Amenities:"#66727b", Parking:"#7b8794",
 };
 
+export const mapDestinationByStoreSlug: Record<string, string> = {
+  naivas:"naivas", "java-house":"java-house", "the-daily-cafe-and-bistro":"daily-cafe",
+  bata:"bata", "american-tourister":"american-tourister", airtel:"airtel",
+  "touch-de-rose":"touch-de-rose", "ozana-beauty":"ozana",
+  "prestige-cinema":"cinema", playza:"playza", beerbirds:"beerbirds",
+  "food-patio":"food-patio", "home-and-beyond":"home-beyond",
+  safaricom:"safaricom", "urban-hair-studio":"urban-hair",
+};

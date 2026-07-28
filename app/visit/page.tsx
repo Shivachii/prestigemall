@@ -61,7 +61,7 @@ export default function VisitPage() {
           </a>
         </div>
         <figure>
-          <Image src="/images/scenery/prestige-exterior-enhanced.png" alt="Exterior of Prestige Plaza on Ngong Road" fill priority sizes="(max-width: 900px) 100vw, 48vw" quality={90} />
+          <Image src="/images/scenery/exterior-enhanced-v2.png" alt="Prestige Plaza entrance and Ngong Road in Nairobi" fill priority sizes="(max-width: 900px) 100vw, 48vw" quality={90} />
           <figcaption><MapPin size={15} /> Ngong Road, Nairobi</figcaption>
         </figure>
       </section>
@@ -74,6 +74,20 @@ export default function VisitPage() {
             <p>{copy}</p>
           </article>
         ))}
+      </section>
+
+      <section className="assistance-contact shell" aria-labelledby="assistance-title">
+        <div className="assistance-heading">
+          <p className="eyebrow">Visitor assistance</p>
+          <h2 id="assistance-title">We&apos;re here to help.</h2>
+          <p>Contact the Prestige Plaza help desk before or during your visit.</p>
+        </div>
+        <div className="assistance-details">
+          <a href="tel:+254700000000"><span>Call the help desk</span><strong>+254 700 000 000</strong><ArrowUpRight size={16} /></a>
+          <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span><strong>+254 700 000 000</strong><ArrowUpRight size={16} /></a>
+          <a href="mailto:hello@prestigeplaza.example"><span>Email</span><strong>hello@prestigeplaza.example</strong><ArrowUpRight size={16} /></a>
+          <div><span>Help-desk hours</span><strong>Daily · 8:00 AM – 8:00 PM</strong></div>
+        </div>
       </section>
 
       <section className="visit-hours-page shell" id="hours">

@@ -27,14 +27,16 @@ const experiences = [
     eyebrow: "Taste",
     title: "Dining, elevated",
     copy: "From unhurried coffee to after-dark dining, discover flavours made for every kind of moment.",
-    image: "/images/dining.png",
+    image: "/images/scenery/food.jpg",
+    alt: "A plated meal being served at a dining table",
     link: "Explore dining",
   },
   {
     eyebrow: "Play",
     title: "Let the games begin",
     copy: "Arcade favourites, immersive play and more, all under one roof at Playza, Prestige Plaza's gaming court.",
-    image: "/images/playza.png",
+    image: "/images/scenery/bowling.jpg",
+    alt: "A bowling ball approaching illuminated pins",
     link: "Discover Playza",
   },
 ];
@@ -97,9 +99,9 @@ export default function Home() {
         <header className={`nav shell ${notice ? "with-notice" : ""}`}>
           <Logo />
           <nav aria-label="Primary navigation">
-            <a href="#discover" className={activeSection === "discover" ? "active" : ""} aria-current={activeSection === "discover" ? "location" : undefined}>Discover</a>
+            <Link href="/stores">Directory</Link>
             <Link href="/events">What&apos;s on</Link>
-            <a href="#directory" className={activeSection === "directory" ? "active" : ""} aria-current={activeSection === "directory" ? "location" : undefined}>Directory</a>
+            <a href="#discover" className={activeSection === "discover" ? "active" : ""} aria-current={activeSection === "discover" ? "location" : undefined}>Discover</a>
             <Link href="/visit">Visit</Link>
           </nav>
           <div className="nav-actions">
@@ -116,10 +118,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15 }}
           >
-            <p className="eyebrow">Nairobi&apos;s meeting place</p>
-            <h1>More than a place.<br /><em>A feeling.</em></h1>
+            <p className="eyebrow">Prestige Plaza · Nairobi</p>
+            <h1>More than a mall.<br /><em>It&apos;s Prestige.</em></h1>
             <div className="feather-sweep" aria-hidden="true"><i /><i /><i /></div>
-            <p className="hero-intro">Shopping, dining and entertainment, beautifully brought together in the heart of Nairobi.</p>
+            <p className="hero-intro">Prestige Plaza is Nairobi&apos;s destination for shopping, dining and entertainment, beautifully brought together on Ngong Road.</p>
             <div className="hero-links">
               <a href="#discover" className="button button-gold">Explore Prestige <ArrowRight size={17} /></a>
               <Link href="/events" className="text-link">See what&apos;s on <ArrowDown size={17} /></Link>
@@ -133,22 +135,21 @@ export default function Home() {
             transition={{ duration: 1, delay: .25 }}
           >
             <figure className="hero-card hero-card-main">
-              <Image src="/images/scenery/prestige-exterior-enhanced.png" alt="Exterior of Prestige Plaza on Ngong Road" fill priority sizes="(max-width: 900px) 100vw, 42vw" quality={90} />
+              <Image src="/images/scenery/exterior-enhanced-v2.png" alt="Prestige Plaza entrance and Ngong Road in Nairobi" fill priority sizes="(max-width: 900px) 100vw, 42vw" quality={90} />
               <figcaption><span>Discover</span> Prestige Plaza</figcaption>
             </figure>
             <figure className="hero-card">
-              <Image src="/images/scenery/naivas.jpeg" alt="Naivas bakery at Prestige Plaza" fill sizes="(max-width: 900px) 50vw, 20vw" quality={100} unoptimized />
+              <Image src="/images/scenery/naivas.jpg" alt="Naivas bakery and fresh food market at Prestige Plaza" fill sizes="(max-width: 900px) 50vw, 20vw" quality={90} />
               <figcaption><span>Shop</span> Naivas</figcaption>
             </figure>
             <figure className="hero-card">
-              <Image src="/images/scenery/playza2.jpeg" alt="Bowling at Playza" fill sizes="(max-width: 900px) 50vw, 20vw" quality={100} unoptimized />
+              <Image src="/images/scenery/bowling.jpg" alt="Illuminated bowling lane and pins at Playza" fill sizes="(max-width: 900px) 50vw, 20vw" quality={90} />
               <figcaption><span>Play</span> Playza</figcaption>
             </figure>
           </motion.div>
         </div>
 
         <div className="hero-meta shell">
-          <div><Clock3 size={17} /><span>Open today</span><strong suppressHydrationWarning>{todayHours.hours}</strong></div>
           <div><MapPin size={17} /><span>Ngong Road</span><strong>Nairobi, Kenya</strong></div>
         </div>
       </section>
@@ -202,7 +203,7 @@ export default function Home() {
             viewport={{ once: true, amount: .2 }}
             transition={{ delay: index * .12 }}
           >
-            <Image src={item.image} fill alt="" sizes="(max-width: 800px) 100vw, 50vw" />
+            <Image src={item.image} fill alt={item.alt} sizes="(max-width: 800px) 100vw, 50vw" quality={90} />
             <div className="card-shade" />
             <div className="card-copy">
               <h3>{item.title}</h3>
@@ -225,7 +226,7 @@ export default function Home() {
             <p>See what&apos;s showing at Prestige Cinema and choose your seats.</p>
             <strong>View showtimes <ArrowUpRight size={15} /></strong>
           </Link>
-          <Link href="/stores/playza" className="plan-card">
+          <Link href="/map?destination=playza&route=1" className="plan-card">
             <span>02</span><ShoppingBag />
             <h3>Play at Playza</h3>
             <p>Make time for games, friendly competition and family fun.</p>
@@ -410,15 +411,15 @@ export default function Home() {
         </div>
         <div className="inside-grid">
           <figure className="inside-tile inside-wide">
-            <Image src="/images/scenery/images.jpeg" alt="Original view of Prestige Plaza on Ngong Road" fill sizes="(max-width: 700px) 100vw, 65vw" quality={100} unoptimized />
+            <Image src="/images/scenery/exterior-enhanced-v2.png" alt="Prestige Plaza entrance and Ngong Road in Nairobi" fill sizes="(max-width: 700px) 100vw, 65vw" quality={90} />
             <figcaption><span>01</span> The mall</figcaption>
           </figure>
           <figure className="inside-tile">
-            <Image src="/images/scenery/naivas.jpeg" alt="Bakery and fresh food selection inside Naivas" fill sizes="(max-width: 700px) 100vw, 35vw" quality={100} unoptimized />
+            <Image src="/images/scenery/naivas.jpg" alt="Bakery and fresh food market inside Naivas" fill sizes="(max-width: 700px) 100vw, 35vw" quality={90} />
             <figcaption><span>02</span> Naivas</figcaption>
           </figure>
           <figure className="inside-tile">
-            <Image src="/images/scenery/playza2.jpeg" alt="Bowling at Playza" fill sizes="(max-width: 700px) 100vw, 35vw" quality={100} unoptimized />
+            <Image src="/images/scenery/bowling.jpg" alt="Illuminated bowling lane and pins at Playza" fill sizes="(max-width: 700px) 100vw, 35vw" quality={90} />
             <figcaption><span>03</span> Playza</figcaption>
           </figure>
         </div>

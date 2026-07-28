@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Clock3, MapPin } from "../../components/icons";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Clock3, MapPin } from "../../components/icons";
 import { getTenant, tenants } from "../../data/tenants";
+import { mapDestinationByStoreSlug } from "../../../data/tenants";
 import { notFound } from "next/navigation";
 
 type StorePageProps = { params: Promise<{ slug: string }> };
@@ -54,14 +55,14 @@ export default async function StorePage({ params }: StorePageProps) {
           {tenant.tagline && <strong className="store-tagline">{tenant.tagline}</strong>}
           <p>{tenant.description}</p>
           <div className="store-actions">
-            <a
-              href={tenant.externalUrl ?? tenant.website ?? "#visit-store"}
-              target={tenant.externalUrl || tenant.website ? "_blank" : undefined}
-              rel={tenant.externalUrl || tenant.website ? "noopener noreferrer" : undefined}
-              className="button button-dark"
-            >
-              {tenant.externalUrl ? (tenant.externalLabel ?? "Visit website") : tenant.website ? "Visit website" : "Plan your visit"} <ArrowRight size={16} />
-            </a>
+            <Link href={mapDestinationByStoreSlug[tenant.slug] ? `/map?destination=${mapDestinationByStoreSlug[tenant.slug]}&route=1` : "/map"} className="button button-dark">
+              Plan your visit <ArrowRight size={16} />
+            </Link>
+            {(tenant.externalUrl || tenant.website) && (
+              <a href={tenant.externalUrl ?? tenant.website} target="_blank" rel="noopener noreferrer" className="button button-store-external">
+                {tenant.externalUrl ? (tenant.externalLabel ?? "Visit website") : "Visit website"} <ArrowUpRight size={16} />
+              </a>
+            )}
             {tenant.whatsapp && (
               <a href={whatsappHref(tenant.whatsapp)} target="_blank" rel="noopener noreferrer" className="store-contact-link">
                 WhatsApp {tenant.whatsapp}

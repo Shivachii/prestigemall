@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Prestige Plaza Nairobi",
     description: "Shopping, dining and entertainment, beautifully brought together.",
     type: "website",
-    images: ["/images/prestige-hero.png"],
+    images: ["/images/scenery/exterior-enhanced-v2.png"],
   },
 };
 
